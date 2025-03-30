@@ -15,8 +15,17 @@ Rozwiązania:
 
 Źródło: https://pl.wikipedia.org/wiki/Problem_ucztuj%C4%85cych_filozof%C3%B3w
 
-### 2. Wątki i co reprezentują
+### 2. Wątki
+Wątki reprezentują filozofów. W wątku filozof może myśleć, podnieść widelce, jeść, przestać jeść i odłożyć widelce.
 
 ### 3. Sekcje krytyczne i rozwiązanie
+- Próba podniesienia zajętego widelca
+  - Rozwiązanie: spinlock blokujący podniesienie widelca, dopóki ten nie zostanie odłożony
+- Podniesienie wszystkich lewych/prawych widelców i wieczne czekanie na prawy/lewy
+  - Rozwiązanie: asymetryczne podnoszenie widelców - nieparzyści filozofowie podnoszą najpierw lewy, parzyści najpierw prawy
 
 ### 4. Instrukcja uruchomienia
+Wpisanie w linii komend kolejno
+`MinGW32-make main`
+
+i `./main <liczba_filozofow>`
