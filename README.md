@@ -20,7 +20,7 @@ Wątki reprezentują filozofów. W wątku filozof może myśleć, podnieść wid
 
 ### 3. Sekcje krytyczne i rozwiązanie
 - Próba podniesienia zajętego widelca
-  - Rozwiązanie: spinlock blokujący podniesienie widelca, dopóki ten nie zostanie odłożony
+  - Rozwiązanie: mutex blokujący podniesienie widelca, dopóki ten nie zostanie odłożony
 - Podniesienie wszystkich lewych/prawych widelców i wieczne czekanie na prawy/lewy
   - Rozwiązanie: asymetryczne podnoszenie widelców - nieparzyści filozofowie podnoszą najpierw lewy, parzyści najpierw prawy
 
