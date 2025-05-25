@@ -29,3 +29,13 @@ Wpisanie w linii komend kolejno
 `MinGW32-make main`
 
 i `./main <liczba_filozofow>`
+
+## Serwer czatu
+
+### 1. Opis problemu
+
+### 2. Wątki
+
+### 3. Sekcje krytyczne i rozwiązanie
+
+### 4. Instrukcja uruchomienia
