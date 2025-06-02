@@ -1,19 +1,23 @@
 import socket
 import threading
+from threading import Lock
 
 clients = []  # List to hold all connected clients
+clients_lock = Lock()
 
 def broadcast(message, sender_socket):
-    for client in clients:
-        if client != sender_socket:
-            try:
-                client.sendall(message.encode('utf-8'))
-            except:
-                client.close()
-                clients.remove(client)
+    with clients_lock:
+        for client in clients:
+            if client != sender_socket:
+                try:
+                    client.sendall(message.encode('utf-8'))
+                except:
+                    client.close()
+                    clients.remove(client)
 
 def handle_client(client_socket, client_address):
-    clients.append(client_socket)
+    with clients_lock:
+        clients.append(client_socket)
     try:
         while True:
             data = client_socket.recv(1024)
@@ -25,8 +29,9 @@ def handle_client(client_socket, client_address):
             broadcast(broadcast_msg, client_socket)
     finally:
         client_socket.close()
-        if client_socket in clients:
-            clients.remove(client_socket)
+        with clients_lock:
+            if client_socket in clients:
+                clients.remove(client_socket)
         print(f"Connection with {client_address} closed.")
 
 def main():
